@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.github.javafaker.Faker;
-
 import es.unex.model.Usuario;
 import es.unex.repository.UsuarioRepository;
 
@@ -17,17 +15,11 @@ class SpringDataApplicationTests {
 
 	@Test
 	void testCrudRepository() {
-		Faker faker=new Faker();
-		int numUsuarios=20;
+		Usuario u1=new Usuario("Alfredo","fredy@gmail.com");
+		Usuario u2=new Usuario("Juan","pedro@gmail.com");
+		Usuario u3=new Usuario("Pedro","juan@gmail.com");
 		
-		for(int i=0;i<numUsuarios;i++) {
-			usuarioRepository.save(new Usuario(faker.name().firstName(),faker.internet().emailAddress()));
-		}
 		
-		Iterable<Usuario> listaUsuarios=usuarioRepository.findByNombreStartingWith("A");
-		for(Usuario u:listaUsuarios) {
-			System.out.println(u.toString());
-		}
 		
 	}
 

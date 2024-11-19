@@ -1,6 +1,7 @@
 package es.unex.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,5 +16,7 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 	//Encontrar los a aquellos cuyos nombres empiezan por una letra
 	@Query("SELECT u FROM Usuario u WHERE u.nombre LIKE CONCAT(:letra, '%')")
     List<Usuario> findByNombreStartingWith(@Param("letra") String letra);
+	
+	Optional<Usuario> findByEmail(String email);
 
 }
